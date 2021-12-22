@@ -29,6 +29,7 @@ Add the following keys to `~/Web.config`
     <add key="BucketFileSystem:FormsPrefix" value="forms" />
     <add key="BucketFileSystem:BucketHostname" value="" />
     <add key="BucketFileSystem:DisableVirtualPathProvider" value="false" />
+    <add key="BucketFileSystem:VirtualPath" value="media" />
   </appSettings>
 </configuration>
 ```
@@ -41,7 +42,7 @@ Add the following keys to `~/Web.config`
 | `BucketName` | Yes | N/A | The name of your S3 bucket. |
 | `BucketHostname` | Sometimes | N/A | The hostname for your bucket (e.g. `test-s3-bucket.s3.eu-west-2.amazonaws.com`). Required when `DisableVirtualPathProvider` is set to `true` |
 | `DisableVirtualPathProvider` | No | `false` | Setting this to `true` will disable the VPP functionality. See below for more info. |
-
+| `VirtualPath` | No | `media` | Setting this value if the DisableVirtualPathProvider is false. |
 If `DisableVirtualPathProvider` is set to `false` or left empty, then you'll need to add the following to `~/Web.config`
 ```xml
 <?xml version="1.0"?>
