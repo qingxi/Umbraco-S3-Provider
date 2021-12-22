@@ -43,6 +43,7 @@ Add the following keys to `~/Web.config`
 | `BucketHostname` | Sometimes | N/A | The hostname for your bucket (e.g. `test-s3-bucket.s3.eu-west-2.amazonaws.com`). Required when `DisableVirtualPathProvider` is set to `true` |
 | `DisableVirtualPathProvider` | No | `false` | Setting this to `true` will disable the VPP functionality. See below for more info. |
 | `VirtualPath` | No | `media` | Setting this value if the DisableVirtualPathProvider is false. |
+
 If `DisableVirtualPathProvider` is set to `false` or left empty, then you'll need to add the following to `~/Web.config`
 ```xml
 <?xml version="1.0"?>
