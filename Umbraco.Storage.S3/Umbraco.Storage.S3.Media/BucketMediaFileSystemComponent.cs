@@ -19,7 +19,14 @@ namespace Umbraco.Storage.S3.Media
             var fs = supportingFileSystems.For<IMediaFileSystem>() as BucketFileSystem;
             if (!config.DisableVirtualPathProvider && fs != null)
             {
-                FileSystemVirtualPathProvider.ConfigureMedia();
+                if (!string.IsNullOrEmpty(config.VirtualPath))
+                {
+                    FileSystemVirtualPathProvider.ConfigureMedia(config.VirtualPath);
+                }
+                else
+                {
+                    FileSystemVirtualPathProvider.ConfigureMedia();
+                }
             }
         }
 
