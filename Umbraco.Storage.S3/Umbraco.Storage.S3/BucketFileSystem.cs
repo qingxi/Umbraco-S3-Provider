@@ -86,8 +86,14 @@ namespace Umbraco.Storage.S3
                 path = path.Substring(1);
 
             //Remove Key Prefix If Duplicate
-            if (path.StartsWith(Config.BucketPrefix, StringComparison.InvariantCultureIgnoreCase))
+            if (!Config.DisableVirtualPathProvider && !string.IsNullOrEmpty(Config.VirtualPath) && path.StartsWith(Config.VirtualPath, StringComparison.InvariantCultureIgnoreCase))
+            {
+                path = path.Substring(Config.VirtualPath.Length);
+            }
+            else if (path.StartsWith(Config.BucketPrefix, StringComparison.InvariantCultureIgnoreCase))
+            {
                 path = path.Substring(Config.BucketPrefix.Length);
+            }
 
             if (isDir && !path.EndsWith(Delimiter))
                 path = string.Concat(path, Delimiter);
